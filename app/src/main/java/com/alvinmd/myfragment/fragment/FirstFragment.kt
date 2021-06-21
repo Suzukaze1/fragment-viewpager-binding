@@ -8,13 +8,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.alvinmd.myfragment.Adapter.RVAdapter
 import com.alvinmd.myfragment.R
+import com.alvinmd.myfragment.data.DataDoa
 import com.alvinmd.myfragment.viewmodel.CommunicationViewModel
 import com.google.android.material.textfield.TextInputEditText
-
+import kotlinx.android.synthetic.main.fragment_first.*
 
 class FirstFragment : Fragment() {
     private var communicationViewModel: CommunicationViewModel? = null
+    private lateinit var rvAdapter: RVAdapter
+    private lateinit var data: DataDoa
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +54,14 @@ class FirstFragment : Fragment() {
                 override fun afterTextChanged(editable: Editable) {
                 }
             })
+        data = DataDoa()
+
+        rvAdapter = RVAdapter(data.generateDoa)
+        with(rv_list_doa){
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(true)
+            adapter = rvAdapter
+        }
     }
 
     companion object {

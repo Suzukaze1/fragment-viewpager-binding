@@ -5,6 +5,8 @@ import android.os.Bundle
 import com.alvinmd.myfragment.Adapter.ViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
+
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
